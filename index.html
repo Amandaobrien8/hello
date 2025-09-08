@@ -37,7 +37,13 @@
     .nav a:focus { outline: 2px solid var(--ring) }
     .spacer { flex:1 }
     .container { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
-    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; margin-top: 28px }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.6fr 0.4fr; /* more room for the text card */
+      gap: 28px;
+      align-items: center;
+      margin-top: 28px;
+    }
     .card { background: linear-gradient(180deg, #0f1724, #0d1420); border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
     .pad { padding: 20px }
     .pill { display:inline-flex; align-items:center; gap:8px; font-size: 12px; color: var(--muted); background:#0c1320; border:1px solid var(--border); padding:6px 10px; border-radius: 999px }
@@ -47,12 +53,12 @@
     .btn { display:inline-flex; align-items:center; gap:10px; padding: 12px 16px; border-radius: 14px; border:1px solid var(--border); background:#0d1626; color:var(--text); font-weight:600 }
     .btn.primary { background: linear-gradient(135deg, #1a2b4a, #112038); border-color:#2a3e61 }
     .btn:hover { filter: brightness(1.08); text-decoration: none }
+    .photo { justify-self: end; }
     .pfp {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover; /* still crops, but smaller circle */
-      border:1px solid var(--border);
+    width: 260px;                   /* adjust as desired (220–300px works well) */
+    height: auto;                   /* natural rectangle */
+    border-radius: var(--radius);   /* rounded corners, not circular */
+    border: 1px solid var(--border);
     }
     section { scroll-margin-top: 72px; margin-top: 32px }
     h2 { font: 700 clamp(20px, 2.2vw, 28px)/1.2 Inter, system-ui; margin: 12px 0 6px }
@@ -110,7 +116,9 @@
         </div>
       </div>
       <div>
-          <img class="pfp card" src="headshot_obrien_2024.png" alt="Headshot of Amanda O'Brien" />
+      <div class="photo">
+        <img class="pfp card" src="headshot_obrien_2024.png" alt="Headshot of Amanda O'Brien" />
+      </div>
       </div>
     </section>
 
