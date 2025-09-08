@@ -11,93 +11,56 @@
 
   <style>
     :root {
-      --bg: #0b0f14;
-      --card: #111824;
-      --muted: #a9b4c2;
-      --text: #e6edf6;
-      --link: #7aa2ff;
-      --accent: #86efac;
-      --ring: #263b5b;
-      --border: #203049;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-      --maxw: 1040px;
+      --bg: #0b0f14; --card: #111824; --muted: #a9b4c2; --text: #e6edf6;
+      --link: #7aa2ff; --accent: #86efac; --ring: #263b5b; --border: #203049;
+      --shadow: 0 10px 30px rgba(0,0,0,.35); --radius: 18px; --maxw: 1040px;
     }
-
     * { box-sizing: border-box }
     html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
-    a { color: var(--link); text-decoration: none }
-    a:hover { text-decoration: underline }
+    a { color: var(--link); text-decoration: none } a:hover { text-decoration: underline }
 
-    header {
-      position: sticky; top: 0; z-index: 40; backdrop-filter: saturate(140%) blur(8px);
-      background: linear-gradient(180deg, rgba(11,15,20,.9), rgba(11,15,20,.6));
-      border-bottom: 1px solid var(--border);
-    }
+    header { position: sticky; top: 0; z-index: 40; backdrop-filter: saturate(140%) blur(8px);
+      background: linear-gradient(180deg, rgba(11,15,20,.9), rgba(11,15,20,.6)); border-bottom: 1px solid var(--border); }
     .nav { max-width: var(--maxw); margin: 0 auto; display:flex; align-items:center; gap:24px; padding:10px 20px }
-    .brand { font-weight:700; letter-spacing:.2px }
-    .nav a { padding:8px 10px; border-radius:10px }
-    .nav a:focus { outline:2px solid var(--ring) }
-    .spacer { flex:1 }
+    .brand { font-weight:700; letter-spacing:.2px } .nav a { padding:8px 10px; border-radius:10px }
+    .nav a:focus { outline:2px solid var(--ring) } .spacer { flex:1 }
 
     .container { max-width: var(--maxw); margin:0 auto; padding:24px; }
 
-    /* HERO layout */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr auto; /* text fills the space; photo sizes to its own width */
-      gap: 32px;
-      align-items: center;
-      margin-top: 28px;
-    }
-
+    /* HERO */
+    .hero { display:grid; grid-template-columns: 1fr auto; gap:32px; align-items:center; margin-top:28px; }
     .card { background: linear-gradient(180deg, #0f1724, #0d1420); border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .pad { padding: 28px; } /* a bit more breathing room for the bio card */
-
-    /* Photo column */
+    .pad { padding: 28px; }
     .photo { justify-self: end; }
-
-    /* Image sizing (rectangular and capped so it doesn't wrap) */
-    .pfp {
-      width: 100%;
-      max-width: 220px; /* adjust 200–260px to taste */
-      height: auto;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
+    .pfp { width:100%; max-width:220px; height:auto; border-radius: var(--radius); border:1px solid var(--border); }
 
     .pill { display:inline-flex; align-items:center; gap:8px; font-size:12px; color:var(--muted); background:#0c1320; border:1px solid var(--border); padding:6px 10px; border-radius:999px }
-    .title { font-size: clamp(28px, 3.8vw, 46px); line-height:1.2; font-weight:700; letter-spacing:.2px; margin:8px 0 6px }
+    .title { font-size: clamp(28px, 3.8vw, 46px); line-height:1.2; font-weight:700; margin:8px 0 6px }
     .subtitle { color: var(--muted); font-size:17px }
     .ctaRow { display:flex; gap:10px; margin-top:16px; flex-wrap:wrap }
     .btn { display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; border:1px solid var(--border); background:#0d1626; color:var(--text); font-weight:600 }
     .btn.primary { background: linear-gradient(135deg, #1a2b4a, #112038); border-color:#2a3e61 }
     .btn:hover { filter:brightness(1.08); text-decoration:none }
 
-    section { scroll-margin-top: 72px; margin-top: 32px }
+    section { scroll-margin-top:72px; margin-top:32px }
     h2 { font:700 clamp(20px, 2.2vw, 28px)/1.2 Inter, system-ui; margin:12px 0 6px }
     p { margin:8px 0 }
     .grid { display:grid; gap:16px }
     .grid.cols-3 { grid-template-columns: repeat(3, 1fr) }
     .grid.cols-2 { grid-template-columns: repeat(2, 1fr) }
 
-    /* Lists */
     .item { padding:16px; border:1px solid var(--border); border-radius:16px; background:#0c1422 }
     .item h3 { margin:0; font-size:16px }
     .meta { color: var(--muted); font-size:13px }
     .muted a { color: var(--link); }
 
-    /* Footer */
     footer { border-top:1px solid var(--border); margin-top:40px; }
     .footer-inner { max-width:var(--maxw); margin:0 auto; padding:24px; color:var(--muted); display:flex; align-items:center; gap:12px; justify-content:space-between; flex-wrap:wrap }
 
-    /* Utilities */
     .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
     .nowrap { white-space: nowrap }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:12px; background:#08101a; border:1px solid var(--border); padding:2px 6px; border-radius:6px }
     .accent { color: var(--accent) }
 
-    /* Responsive */
     @media (max-width: 860px) {
       .hero { grid-template-columns: 1fr; gap:20px; }
       .photo { justify-self: center; }
@@ -136,7 +99,6 @@
           <a class="btn" href="#contact" aria-label="Jump to Contact">Contact</a>
         </div>
       </div>
-
       <div class="photo">
         <img class="pfp card" src="headshot_obrien_2024.png" alt="Headshot of Amanda O'Brien" />
       </div>
@@ -170,8 +132,6 @@
         · ORCID:
         <a id="orcidLink" href="https://orcid.org/0000-0001-5350-5457" target="_blank" rel="noopener">0000-0001-5350-5457</a>
       </p>
-
-      <!-- JS will inject items here -->
       <div id="pubs" class="grid"></div>
     </section>
 
@@ -234,64 +194,72 @@
     </div>
   </footer>
 
+  <!-- Single script: keep this just before </body> -->
   <script>
-    // --- Data ---
-    const publications = [
-      {
-        title: "Development of a self-report measure of prediction in daily life: The prediction-related experiences questionnaire.",
-        authors: "O’Brien, A. M., May, T. A., Koskey, K. L. K., Bungert, L., Cardinaux, A., Cannon, J., Treves, I. N., D’Mello, A. M., Joseph, R. M., Li, C., Diamond, S., Gabrieli, J. D. E., Sinha, P.",
-        venue: "Journal of Autism and Developmental Disorders, 2024",
-        links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
-      },
-      {
-        title: "Altered engagement of the speech motor network is associated with reduced phonological working memory in autism.",
-        authors: "O’Brien, A. M., Perrachione, T. K., Wisman Weil, L., Sanchez Araujo, Y., Halverson, K., Harris, A., Ostrovskaya, I., Kjelgaard, M., Wexler, K., Tager-Flusberg, H., Gabrieli, J. D. E., & Qi, Z.",
-        venue: "Neuroimage: Clinical, 2023",
-        links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
-      },
-      {
-        title: "Prediction in Autism Spectrum Disorder: A systematic review of empirical evidence.",
-        authors: "Cannon, J.*, O’Brien, A. M.*, Bungert, L., & Sinha, P.",
-        venue: "Autism Research, 2021",
-        links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
+    (function () {
+      // --- Data ---
+      const publications = [
+        {
+          title: "Development of a self-report measure of prediction in daily life: The prediction-related experiences questionnaire.",
+          authors: "O’Brien, A. M., May, T. A., Koskey, K. L. K., Bungert, L., Cardinaux, A., Cannon, J., Treves, I. N., D’Mello, A. M., Joseph, R. M., Li, C., Diamond, S., Gabrieli, J. D. E., Sinha, P.",
+          venue: "Journal of Autism and Developmental Disorders, 2024",
+          links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
+        },
+        {
+          title: "Altered engagement of the speech motor network is associated with reduced phonological working memory in autism.",
+          authors: "O’Brien, A. M., Perrachione, T. K., Wisman Weil, L., Sanchez Araujo, Y., Halverson, K., Harris, A., Ostrovskaya, I., Kjelgaard, M., Wexler, K., Tager-Flusberg, H., Gabrieli, J. D. E., & Qi, Z.",
+          venue: "Neuroimage: Clinical, 2023",
+          links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
+        },
+        {
+          title: "Prediction in Autism Spectrum Disorder: A systematic review of empirical evidence.",
+          authors: "Cannon, J.*, O’Brien, A. M.*, Bungert, L., & Sinha, P.",
+          venue: "Autism Research, 2021",
+          links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
+        }
+      ];
+
+      const news = [
+        { date: "2025-09-01", text: "Our new paper related to employment experiences in autistic adults is in press!" }
+      ];
+
+      // --- Helpers ---
+      function el(tag, attrs = {}, children = []) {
+        const n = document.createElement(tag);
+        Object.entries(attrs).forEach(([k, v]) => (k === "class" ? (n.className = v) : n.setAttribute(k, v)));
+        (Array.isArray(children) ? children : [children])
+          .filter(Boolean)
+          .forEach(c => (typeof c === "string" ? n.appendChild(document.createTextNode(c)) : n.appendChild(c)));
+        return n;
       }
-    ];
 
-    const news = [
-      { date: "2025-09-01", text: "Our new paper related to employment experiences in autistic adults is in press!" }
-    ];
+      // --- Render publications ---
+      const pubsRoot = document.getElementById("pubs");
+      if (pubsRoot) {
+        publications.forEach(p => {
+          const linkNodes = p.links
+            .map(l => el("a", { href: l.href, target: "_blank", rel: "noopener" }, l.label))
+            .flatMap((a, i, arr) => (i < arr.length - 1 ? [a, document.createTextNode(" · ")] : [a]));
 
-    // --- Helpers ---
-    function el(tag, attrs = {}, children = []) {
-      const n = document.createElement(tag);
-      Object.entries(attrs).forEach(([k, v]) => (k === "class" ? (n.className = v) : n.setAttribute(k, v)));
-      (Array.isArray(children) ? children : [children])
-        .filter(Boolean)
-        .forEach(c => (typeof c === "string" ? n.appendChild(document.createTextNode(c)) : n.appendChild(c)));
-      return n;
-    }
+          const node = el("article", { class: "item" }, [
+            el("h3", {}, p.title),
+            el("p", { class: "meta" }, `${p.authors} — ${p.venue}`),
+            el("div", { class: "meta" }, linkNodes)
+          ]);
+          pubsRoot.appendChild(node);
+        });
+      }
 
-    // --- Render publications ---
-    const pubsRoot = document.getElementById("pubs");
-    publications.forEach(p => {
-      const linkNodes = p.links
-        .map(l => el("a", { href: l.href, target: "_blank", rel: "noopener" }, l.label))
-        .flatMap((a, i, arr) => (i < arr.length - 1 ? [a, document.createTextNode(" · ")] : [a]));
+      // --- Render news ---
+      const newsRoot = document.getElementById("newsList");
+      if (newsRoot) {
+        news.forEach(n => newsRoot.appendChild(el("li", {}, `${n.date}: ${n.text}`)));
+      }
 
-      const node = el("article", { class: "item" }, [
-        el("h3", {}, p.title),
-        el("p", { class: "meta" }, `${p.authors} — ${p.venue}`),
-        el("div", { class: "meta" }, linkNodes)
-      ]);
-      pubsRoot.appendChild(node);
-    });
-
-    // --- Render news ---
-    const newsRoot = document.getElementById("newsList");
-    news.forEach(n => newsRoot.appendChild(el("li", {}, `${n.date}: ${n.text}`)));
-
-    // --- Year ---
-    document.getElementById("year").textContent = new Date().getFullYear();
+      // --- Year ---
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>
