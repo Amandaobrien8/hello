@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amanda O'Brien, PhD, CCC-SLP </title>
+  <title>Amanda O'Brien, PhD, CCC-SLP</title>
   <meta name="description" content="Academic website for Amanda M. O'Brien: research, publications, teaching, and contact." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #0b0f14;
@@ -22,89 +23,87 @@
       --radius: 18px;
       --maxw: 1040px;
     }
+
     * { box-sizing: border-box }
-    html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font: 16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font:16px/1.6 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
     a { color: var(--link); text-decoration: none }
     a:hover { text-decoration: underline }
+
     header {
       position: sticky; top: 0; z-index: 40; backdrop-filter: saturate(140%) blur(8px);
       background: linear-gradient(180deg, rgba(11,15,20,.9), rgba(11,15,20,.6));
       border-bottom: 1px solid var(--border);
     }
-    .nav { max-width: var(--maxw); margin: 0 auto; display:flex; align-items:center; gap:24px; padding: 10px 20px }
-    .brand { font-weight: 700; letter-spacing: .2px }
-    .nav a { padding: 8px 10px; border-radius: 10px }
-    .nav a:focus { outline: 2px solid var(--ring) }
+    .nav { max-width: var(--maxw); margin: 0 auto; display:flex; align-items:center; gap:24px; padding:10px 20px }
+    .brand { font-weight:700; letter-spacing:.2px }
+    .nav a { padding:8px 10px; border-radius:10px }
+    .nav a:focus { outline:2px solid var(--ring) }
     .spacer { flex:1 }
-    .container { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+
+    .container { max-width: var(--maxw); margin:0 auto; padding:24px; }
+
     /* HERO layout */
     .hero {
       display: grid;
-      grid-template-columns: 1fr auto; /* text fills, photo sizes to itself */
+      grid-template-columns: 1fr auto; /* text fills the space; photo sizes to its own width */
       gap: 32px;
       align-items: center;
       margin-top: 28px;
     }
-    
+
+    .card { background: linear-gradient(180deg, #0f1724, #0d1420); border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .pad { padding: 28px; } /* a bit more breathing room for the bio card */
+
     /* Photo column */
     .photo { justify-self: end; }
-    
+
     /* Image sizing (rectangular and capped so it doesn't wrap) */
     .pfp {
       width: 100%;
-      max-width: 220px;  /* adjust 200–260px to taste */
+      max-width: 220px; /* adjust 200–260px to taste */
       height: auto;
       border-radius: var(--radius);
       border: 1px solid var(--border);
     }
-    
-    /* Mobile */
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; gap: 20px; }
-      .photo { justify-self: center; }
-      .pfp { max-width: 70vw; }
-    }
 
-
-
-
-    .pill { display:inline-flex; align-items:center; gap:8px; font-size: 12px; color: var(--muted); background:#0c1320; border:1px solid var(--border); padding:6px 10px; border-radius: 999px }
-    .title { font-size: clamp(26px, 3.5vw, 42px); line-height: 1.2; font-weight: 700; letter-spacing: .2px; margin: 8px 0 6px 0 }
-    .subtitle { color: var(--muted); font-size: 16px }
-    .ctaRow { display:flex; gap: 10px; margin-top: 16px; flex-wrap: wrap }
-    .btn { display:inline-flex; align-items:center; gap:10px; padding: 12px 16px; border-radius: 14px; border:1px solid var(--border); background:#0d1626; color:var(--text); font-weight:600 }
+    .pill { display:inline-flex; align-items:center; gap:8px; font-size:12px; color:var(--muted); background:#0c1320; border:1px solid var(--border); padding:6px 10px; border-radius:999px }
+    .title { font-size: clamp(28px, 3.8vw, 46px); line-height:1.2; font-weight:700; letter-spacing:.2px; margin:8px 0 6px }
+    .subtitle { color: var(--muted); font-size:17px }
+    .ctaRow { display:flex; gap:10px; margin-top:16px; flex-wrap:wrap }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; border:1px solid var(--border); background:#0d1626; color:var(--text); font-weight:600 }
     .btn.primary { background: linear-gradient(135deg, #1a2b4a, #112038); border-color:#2a3e61 }
-    .btn:hover { filter: brightness(1.08); text-decoration: none }
-    .photo { justify-self: end; }
-    .pfp {
-    width: 260px;                   /* adjust as desired (220–300px works well) */
-    height: auto;                   /* natural rectangle */
-    border-radius: var(--radius);   /* rounded corners, not circular */
-    border: 1px solid var(--border);
-    }
+    .btn:hover { filter:brightness(1.08); text-decoration:none }
+
     section { scroll-margin-top: 72px; margin-top: 32px }
-    h2 { font: 700 clamp(20px, 2.2vw, 28px)/1.2 Inter, system-ui; margin: 12px 0 6px }
-    p { margin: 8px 0 }
-    .grid { display:grid; gap: 16px }
+    h2 { font:700 clamp(20px, 2.2vw, 28px)/1.2 Inter, system-ui; margin:12px 0 6px }
+    p { margin:8px 0 }
+    .grid { display:grid; gap:16px }
     .grid.cols-3 { grid-template-columns: repeat(3, 1fr) }
     .grid.cols-2 { grid-template-columns: repeat(2, 1fr) }
-    @media (max-width: 860px) { .hero { grid-template-columns: 1fr } .grid.cols-3 { grid-template-columns: 1fr } .grid.cols-2 { grid-template-columns: 1fr } }
 
     /* Lists */
-    .item { padding:16px; border:1px solid var(--border); border-radius: 16px; background:#0c1422 }
-    .item h3 { margin:0; font-size: 16px }
-    .meta { color: var(--muted); font-size: 13px }
+    .item { padding:16px; border:1px solid var(--border); border-radius:16px; background:#0c1422 }
+    .item h3 { margin:0; font-size:16px }
+    .meta { color: var(--muted); font-size:13px }
+    .muted a { color: var(--link); }
 
     /* Footer */
-    footer { border-top: 1px solid var(--border); margin-top: 40px; }
-    .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 24px; color: var(--muted); display:flex; align-items:center; gap:12px; justify-content: space-between; flex-wrap: wrap }
+    footer { border-top:1px solid var(--border); margin-top:40px; }
+    .footer-inner { max-width:var(--maxw); margin:0 auto; padding:24px; color:var(--muted); display:flex; align-items:center; gap:12px; justify-content:space-between; flex-wrap:wrap }
 
     /* Utilities */
     .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
     .nowrap { white-space: nowrap }
-    .muted { color: var(--muted) }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; background:#08101a; border:1px solid var(--border); padding:2px 6px; border-radius: 6px }
+    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:12px; background:#08101a; border:1px solid var(--border); padding:2px 6px; border-radius:6px }
     .accent { color: var(--accent) }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; gap:20px; }
+      .photo { justify-self: center; }
+      .pfp { max-width: 70vw; }
+      .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -122,29 +121,26 @@
   </header>
 
   <main id="content" class="container">
-    
-    
     <!-- HERO -->
-  <section id="home" class="hero">
-  <div class="card pad">
-    <span class="pill">Welcome — <span class="accent">Academic Website</span></span>
-    <h1 class="title">Amanda M. O'Brien</h1>
-    <p class="subtitle">Postdoctoral Fellow / Bergelson Lab · Laboratory for Developmental Studies · Harvard University </p>
-    <p>
-      I am an interdisciplinary <strong>developmental cognitive neuroscientist and speech-language pathologist</strong>. I investigate how brain networks and behaviors that support speech and language emerge, interact, and diverge in typical and atypical development, with a focus on autism.
-    </p>
-    <div class="ctaRow">
-      <a class="btn primary" href="#publications" aria-label="Jump to publications">View publications</a>
-      <a class="btn" href="AmandaOBrien_CV_September2025.pdf" aria-label="View CV">View CV</a>
-      <a class="btn" href="#contact" aria-label="Jump to Contact">Contact</a>
-    </div>
-  </div> <!-- ✅ close the card before the photo -->
+    <section id="home" class="hero">
+      <div class="card pad">
+        <span class="pill">Welcome — <span class="accent">Academic Website</span></span>
+        <h1 class="title">Amanda M. O'Brien</h1>
+        <p class="subtitle">Postdoctoral Fellow / Bergelson Lab · Laboratory for Developmental Studies · Harvard University</p>
+        <p>
+          I am an interdisciplinary <strong>developmental cognitive neuroscientist and speech-language pathologist</strong>. I investigate how brain networks and behaviors that support speech and language emerge, interact, and diverge in typical and atypical development, with a focus on autism.
+        </p>
+        <div class="ctaRow">
+          <a class="btn primary" href="#publications" aria-label="Jump to publications">View publications</a>
+          <a class="btn" href="./AmandaOBrien_CV_September2025.pdf" target="_blank" rel="noopener" aria-label="View CV">View CV</a>
+          <a class="btn" href="#contact" aria-label="Jump to Contact">Contact</a>
+        </div>
+      </div>
 
-  <div class="photo">
-    <img class="pfp card" src="headshot_obrien_2024.png" alt="Headshot of Amanda O'Brien" />
-  </div>
-</section>
-
+      <div class="photo">
+        <img class="pfp card" src="headshot_obrien_2024.png" alt="Headshot of Amanda O'Brien" />
+      </div>
+    </section>
 
     <!-- RESEARCH -->
     <section id="research">
@@ -152,7 +148,7 @@
       <div class="grid cols-3">
         <article class="item">
           <h3>Theme 1</h3>
-          <p class="meta">Examine the <strong>brain and behavioral relationships</strong> between speech production, perception and language development in typical and atypical development.</p>
+          <p class="meta">Examine the <strong>brain and behavioral relationships</strong> between speech production, perception, and language development in typical and atypical development.</p>
         </article>
         <article class="item">
           <h3>Theme 2</h3>
@@ -160,26 +156,24 @@
         </article>
         <article class="item">
           <h3>Theme 3</h3>
-          <p class="meta">Refine </strong>theories</strong> of typical and atypical speech and language development.</p>
+          <p class="meta">Refine <strong>theories</strong> of typical and atypical speech and language development.</p>
         </article>
       </div>
     </section>
 
-  <!-- PUBLICATIONS -->
-  <section id="publications">
-    <h2>Selected Publications</h2>
-    <p class="muted">
-      Full list on
-      <a id="googleScholar" href="https://scholar.google.com/citations?user=KwQdt1kAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-      · ORCID:
-      <a id="orcidLink" href="https://orcid.org/0000-0001-5350-5457" target="_blank" rel="noopener">0000-0001-5350-5457</a>
-    </p>
-  
-    <!-- This is where the items will render -->
-    <div id="pubs" class="grid"></div>
-  </section>
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <h2>Selected Publications</h2>
+      <p class="muted">
+        Full list on
+        <a id="googleScholar" href="https://scholar.google.com/citations?user=KwQdt1kAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        · ORCID:
+        <a id="orcidLink" href="https://orcid.org/0000-0001-5350-5457" target="_blank" rel="noopener">0000-0001-5350-5457</a>
+      </p>
 
-        
+      <!-- JS will inject items here -->
+      <div id="pubs" class="grid"></div>
+    </section>
 
     <!-- TEACHING -->
     <section id="teaching">
@@ -191,7 +185,7 @@
         </div>
         <div class="item">
           <h3>Physiology, Acoustics, and Perception of Speech (Summer · 2022)</h3>
-          <p class="meta"><em>Instructor of record</em>. This course will cover advanced topics in the physiology and acoustics of speech production and perception of speech. Laboratory methods for studying the production and perception of speech will also be presented.</p>
+          <p class="meta"><em>Instructor of record</em>. This course covers advanced topics in the physiology and acoustics of speech production and the perception of speech. Laboratory methods for studying the production and perception of speech are also presented.</p>
         </div>
       </div>
     </section>
@@ -200,36 +194,38 @@
     <section id="cv">
       <h2>CV</h2>
       <div class="item">
-          <p><a class="btn" href="AmandaOBrien_CV_September2025.pdf" download>Download CV (PDF)</a></p>
+        <p>
+          <a class="btn" href="./AmandaOBrien_CV_September2025.pdf" target="_blank" rel="noopener">View CV (PDF)</a>
+          <a class="btn" href="./AmandaOBrien_CV_September2025.pdf" download>Download CV (PDF)</a>
+        </p>
       </div>
     </section>
 
-    <!-- NEWS (optional) -->
+    <!-- NEWS -->
     <section id="news">
       <h2>News</h2>
       <ul id="newsList"></ul>
     </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-  <div class="item">
-    <p>
-      <span class="nowrap"><strong>Email:</strong> 
-        <a href="mailto:amanda_obrien@g.harvard.edu">amanda_obrien@g.harvard.edu</a>
-      </span> · 
-      <span class="nowrap"><strong>Office:</strong> Shannon Hall, Harvard University </span>
-    </p>
-    <p>
-      <a href="https://scholar.google.com/citations?user=KwQdt1kAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar profile">
-        https://scholar.google.com/citations?user=KwQdt1kAAAAJ&hl=en
-      </a> ·
-      <a href="https://orcid.org/0000-0001-5350-5457" target="_blank" rel="noopener" aria-label="ORCID profile">
-        https://orcid.org/0000-0001-5350-5457
-      </a>
-    </p>
-  </div>
-</section>
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="item">
+        <p>
+          <span class="nowrap"><strong>Email:</strong>
+            <a href="mailto:amanda_obrien@g.harvard.edu">amanda_obrien@g.harvard.edu</a>
+          </span>
+          ·
+          <span class="nowrap"><strong>Office:</strong> Shannon Hall, Harvard University</span>
+        </p>
+        <p>
+          <a href="https://scholar.google.com/citations?user=KwQdt1kAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar profile">Google Scholar</a>
+          ·
+          <a href="https://orcid.org/0000-0001-5350-5457" target="_blank" rel="noopener" aria-label="ORCID profile">ORCID</a>
+        </p>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <div class="footer-inner">
@@ -239,96 +235,63 @@
   </footer>
 
   <script>
-       
-        <script>
-      // --- Data ---
-      const publications = [
-        {
-          title: "Development of a self-report measure of prediction in daily life: The prediction-related experiences questionnaire.",
-          authors: "O’Brien, A. M., May, T. A., Koskey, K. L. K., Bungert, L., Cardinaux, A., Cannon, J., Treves, I. N., D’Mello, A. M., Joseph, R. M., Li, C., Diamond, S., Gabrieli, J. D. E., Sinha, P.",
-          venue: "Journal of Autism and Developmental Disorders, 2024",
-          links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
-        },
-        {
-          title: "Altered engagement of the speech motor network is associated with reduced phonological working memory in autism.",
-          authors: "O’Brien, A. M., Perrachione, T. K., Wisman Weil, L., Sanchez Araujo, Y., Halverson, K., Harris, A., Ostrovskaya, I., Kjelgaard, M., Wexler, K., Tager-Flusberg, H., Gabrieli, J. D. E., & Qi, Z.",
-          venue: "Neuroimage: Clinical, 2023",
-          links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
-        },
-        {
-          title: "Prediction in Autism Spectrum Disorder: A systematic review of empirical evidence.",
-          authors: "Cannon, J.*, O’Brien, A. M.*, Bungert, L., & Sinha, P.",
-          venue: "Autism Research, 2021",
-          links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
-        }
-      ];
-    
-      const news = [
-        { date: "2025-09-01", text: "Our new paper related to employment experiences in autistic adults is in press!" }
-      ];
-    
-      // --- Helpers ---
-      function el(tag, attrs = {}, children = []) {
-        const n = document.createElement(tag);
-        Object.entries(attrs).forEach(([k, v]) => (k === "class" ? (n.className = v) : n.setAttribute(k, v)));
-        (Array.isArray(children) ? children : [children])
-          .filter(Boolean)
-          .forEach(c => (typeof c === "string" ? n.appendChild(document.createTextNode(c)) : n.appendChild(c)));
-        return n;
+    // --- Data ---
+    const publications = [
+      {
+        title: "Development of a self-report measure of prediction in daily life: The prediction-related experiences questionnaire.",
+        authors: "O’Brien, A. M., May, T. A., Koskey, K. L. K., Bungert, L., Cardinaux, A., Cannon, J., Treves, I. N., D’Mello, A. M., Joseph, R. M., Li, C., Diamond, S., Gabrieli, J. D. E., Sinha, P.",
+        venue: "Journal of Autism and Developmental Disorders, 2024",
+        links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
+      },
+      {
+        title: "Altered engagement of the speech motor network is associated with reduced phonological working memory in autism.",
+        authors: "O’Brien, A. M., Perrachione, T. K., Wisman Weil, L., Sanchez Araujo, Y., Halverson, K., Harris, A., Ostrovskaya, I., Kjelgaard, M., Wexler, K., Tager-Flusberg, H., Gabrieli, J. D. E., & Qi, Z.",
+        venue: "Neuroimage: Clinical, 2023",
+        links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
+      },
+      {
+        title: "Prediction in Autism Spectrum Disorder: A systematic review of empirical evidence.",
+        authors: "Cannon, J.*, O’Brien, A. M.*, Bungert, L., & Sinha, P.",
+        venue: "Autism Research, 2021",
+        links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
       }
-    
-      // --- Render publications ---
-      const pubsRoot = document.getElementById("pubs");
-      publications.forEach(p => {
-        const linkNodes = p.links
-          .map(l => el("a", { href: l.href, target: "_blank", rel: "noopener" }, l.label))
-          .flatMap((a, i, arr) => (i < arr.length - 1 ? [a, document.createTextNode(" · ")] : [a]));
-    
-        const node = el("article", { class: "item" }, [
-          el("h3", {}, p.title),
-          el("p", { class: "meta" }, `${p.authors} — ${p.venue}`),
-          el("div", { class: "meta" }, linkNodes)
-        ]);
-        pubsRoot.appendChild(node);
-      });
-    
-      // --- Render news ---
-      const newsRoot = document.getElementById("newsList");
-      news.forEach(n => newsRoot.appendChild(el("li", {}, `${n.date}: ${n.text}`)));
-    
-      // --- Year ---
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-
-
-    const news = [
-      { date: "2025‑09‑01", text: "Our new paper related to employment experiences in autistic adults is in press!" }
     ];
 
-    function el(tag, attrs={}, children=[]) {
+    const news = [
+      { date: "2025-09-01", text: "Our new paper related to employment experiences in autistic adults is in press!" }
+    ];
+
+    // --- Helpers ---
+    function el(tag, attrs = {}, children = []) {
       const n = document.createElement(tag);
-      Object.entries(attrs).forEach(([k,v]) => k === 'class' ? n.className = v : n.setAttribute(k, v));
-      (Array.isArray(children) ? children : [children]).filter(Boolean).forEach(c => {
-        if (typeof c === 'string') n.appendChild(document.createTextNode(c)); else n.appendChild(c);
-      });
+      Object.entries(attrs).forEach(([k, v]) => (k === "class" ? (n.className = v) : n.setAttribute(k, v)));
+      (Array.isArray(children) ? children : [children])
+        .filter(Boolean)
+        .forEach(c => (typeof c === "string" ? n.appendChild(document.createTextNode(c)) : n.appendChild(c)));
       return n;
     }
 
-    const pubsRoot = document.getElementById('pubs');
+    // --- Render publications ---
+    const pubsRoot = document.getElementById("pubs");
     publications.forEach(p => {
-      const links = el('div', {class:'meta'}, p.links.map(l => el('a', {href:l.href}, l.label)).flatMap((a,i,arr)=> i<arr.length-1 ? [a, document.createTextNode(' · ')] : [a]));
-      const node = el('article', {class:'item'}, [
-        el('h3', {}, p.title),
-        el('p', {class:'meta'}, p.authors + ' — ' + p.venue),
-        links
+      const linkNodes = p.links
+        .map(l => el("a", { href: l.href, target: "_blank", rel: "noopener" }, l.label))
+        .flatMap((a, i, arr) => (i < arr.length - 1 ? [a, document.createTextNode(" · ")] : [a]));
+
+      const node = el("article", { class: "item" }, [
+        el("h3", {}, p.title),
+        el("p", { class: "meta" }, `${p.authors} — ${p.venue}`),
+        el("div", { class: "meta" }, linkNodes)
       ]);
       pubsRoot.appendChild(node);
     });
 
-    const newsRoot = document.getElementById('newsList');
-    news.forEach(n => newsRoot.appendChild(el('li', {}, `${n.date}: ${n.text}`)));
+    // --- Render news ---
+    const newsRoot = document.getElementById("newsList");
+    news.forEach(n => newsRoot.appendChild(el("li", {}, `${n.date}: ${n.text}`)));
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // --- Year ---
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
