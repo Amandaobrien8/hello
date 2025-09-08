@@ -37,22 +37,36 @@
     .nav a:focus { outline: 2px solid var(--ring) }
     .spacer { flex:1 }
     .container { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+    /* HERO layout */
     .hero {
-  grid-template-columns: 1.6fr 0.4fr;
+      display: grid;
+      grid-template-columns: 1fr auto; /* text takes remaining space, photo sizes to its width */
+      gap: 32px;
+      align-items: center;
+      margin-top: 28px;
     }
-  
-    .photo { 
-    justify-self: end;      /* flush the photo wrapper to the far right */
-    transform: translateX(6px); /* subtle nudge even closer to the edge */
-  }
-  
+    
+    /* Photo column */
+    .photo {
+      justify-self: end;       /* keep photo on the far right */
+    }
+    
+    /* Image sizing (rectangular and capped so it doesn't wrap) */
     .pfp {
-  width: 100%;            /* take full width of its column */
-  max-width: 220px;       /* cap size so it doesn't push down */
-  height: auto;           /* keep rectangular */
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-}
+      width: 100%;
+      max-width: 220px;        /* adjust: 200–260px as you like */
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    
+    /* Mobile: stack and center the photo, scale nicely */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; gap: 20px; }
+      .photo { justify-self: center; }
+      .pfp { max-width: 70vw; }
+    }
+
 
 
     .pill { display:inline-flex; align-items:center; gap:8px; font-size: 12px; color: var(--muted); background:#0c1320; border:1px solid var(--border); padding:6px 10px; border-radius: 999px }
@@ -111,22 +125,25 @@
   <main id="content" class="container">
     <!-- HERO -->
     <section id="home" class="hero">
-      <div class="card pad">
-        <span class="pill">Welcome — <span class="accent">Academic Website</span></span>
-        <h1 class="title">Amanda M. O'Brien</h1>
-        <p class="subtitle">Postdoctoral Fellow / Bergelson Lab · Laboratory for Developmental Studies · Harvard University </p>
-        <p>
-         I am an interdisciplinary <strong>developmental cognitive neuroscientist and speech-language pathologist</strong>. I investigate how brain networks and behaviors that support speech and language emerge, interact, and diverge in typical and atypical development, with a focus on autism.
-        </p>
-        <div class="ctaRow">
-          <a class="btn primary" href="#publications" aria-label="Jump to publications">View publications</a>
-          <a class="btn" href="AmandaOBrien_CV_September2025.pdf" aria-label="View CV">View CV</a>
-          <a class="btn" href="#contact" aria-label="Jump to Contact">Contact</a>
-        </div>
-     <div class="photo">
-    <img class="pfp card" src="headshot_obrien_2024.png" alt="Headshot of Amanda O'Brien" />
+    <div class="card pad">
+      <span class="pill">Welcome — <span class="accent">Academic Website</span></span>
+      <h1 class="title">Amanda M. O'Brien</h1>
+      <p class="subtitle">Postdoctoral Fellow / Bergelson Lab · Laboratory for Developmental Studies · Harvard University </p>
+      <p>
+        I am an interdisciplinary <strong>developmental cognitive neuroscientist and speech-language pathologist</strong>. I investigate how brain networks and behaviors that support speech and language emerge, interact, and diverge in typical and atypical development, with a focus on autism.
+      </p>
+      <div class="ctaRow">
+        <a class="btn primary" href="#publications" aria-label="Jump to publications">View publications</a>
+        <a class="btn" href="AmandaOBrien_CV_September2025.pdf" aria-label="View CV">View CV</a>
+        <a class="btn" href="#contact" aria-label="Jump to Contact">Contact</a>
+      </div>
+    </div> <!-- ✅ close the card -->
+  
+    <div class="photo">
+      <img class="pfp card" src="headshot_obrien_2024.png" alt="Headshot of Amanda O'Brien" />
     </div>
-    </section>
+  </section>
+
 
     <!-- RESEARCH -->
     <section id="research">
