@@ -40,32 +40,31 @@
     /* HERO layout */
     .hero {
       display: grid;
-      grid-template-columns: 1fr auto; /* text takes remaining space, photo sizes to its width */
+      grid-template-columns: 1fr auto; /* text fills, photo sizes to itself */
       gap: 32px;
       align-items: center;
       margin-top: 28px;
     }
     
     /* Photo column */
-    .photo {
-      justify-self: end;       /* keep photo on the far right */
-    }
+    .photo { justify-self: end; }
     
     /* Image sizing (rectangular and capped so it doesn't wrap) */
     .pfp {
       width: 100%;
-      max-width: 220px;        /* adjust: 200–260px as you like */
+      max-width: 220px;  /* adjust 200–260px to taste */
       height: auto;
       border-radius: var(--radius);
       border: 1px solid var(--border);
     }
     
-    /* Mobile: stack and center the photo, scale nicely */
+    /* Mobile */
     @media (max-width: 860px) {
       .hero { grid-template-columns: 1fr; gap: 20px; }
       .photo { justify-self: center; }
       .pfp { max-width: 70vw; }
     }
+
 
 
 
@@ -123,6 +122,8 @@
   </header>
 
   <main id="content" class="container">
+    
+    
     <!-- HERO -->
   <section id="home" class="hero">
   <div class="card pad">
@@ -164,15 +165,21 @@
       </div>
     </section>
 
-    <!-- PUBLICATIONS -->
-    <section id="publications">
-      <h2>Selected Publications</h2>
-      <p class="muted">
-  Full list on
-    <a id="googleScholar" href="https://scholar.google.com/citations?user=KwQdt1kAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
-    · ORCID:
-    <a id="orcidLink" href="https://orcid.org/0000-0001-5350-5457" target="_blank" rel="noopener">0000-0001-5350-5457</a>
-  </p>
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h2>Selected Publications</h2>
+    <p class="muted">
+      Full list on
+      <a id="googleScholar" href="https://scholar.google.com/citations?user=KwQdt1kAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      · ORCID:
+      <a id="orcidLink" href="https://orcid.org/0000-0001-5350-5457" target="_blank" rel="noopener">0000-0001-5350-5457</a>
+    </p>
+  
+    <!-- This is where the items will render -->
+    <div id="pubs" class="grid"></div>
+  </section>
+
+        
 
     <!-- TEACHING -->
     <section id="teaching">
@@ -224,8 +231,6 @@
   </div>
 </section>
 
-
-
   <footer>
     <div class="footer-inner">
       <div>© <span id="year"></span> Amanda M. O'Brien</div>
@@ -234,27 +239,67 @@
   </footer>
 
   <script>
-    // ——— Simple data-driven publications + news (edit the arrays) ———
-    const publications = [
-      {
-        title: "Development of a self-report measure of prediction in daily life: The prediction-related experiences questionnaire.",
-        authors: "O’Brien, A. M., May, T. A., Koskey, K. L. K., Bungert, L., Cardinaux, A., Cannon, J., Treves, I. N., D’Mello, A. M., Joseph, R. M., Li, C., Diamond, S., Gabrieli, J. D. E., Sinha, P.",
-        venue: "Journal of Autism and Developmental Disorders, 2024",
-        links: [{label: "PDF", href: "#"}, {label: "DOI", href: "#"}, {label: "Project", href: "#"}]
-      },
-      {
-        title: "Altered engagement of the speech motor network is associated with reduced phonological working memory in autism.",
-        authors: "O’Brien, A. M., Perrachione, T. K., Wisman Weil, L., Sanchez Araujo, Y., Halverson, K., Harris, A., Ostrovskaya, I., Kjelgaard, M., Wexler, K., Tager-Flusberg, H., Gabrieli, J. D. E., & Qi, Z.",
-        venue: "Neuroimage: Clinical, 2023",
-        links: [{label: "PDF", href: "#"}, {label: "DOI", href: "#"}, {label: "Code", href: "#"}]
-      },
-      {
-        title: "Prediction in Autism Spectrum Disorder: A systematic review of empirical evidence.",
-        authors: "Cannon, J.*, O’Brien, A. M.*, Bungert, L., & Sinha, P.",
-        venue: "Autism Research, 2021",
-        links: [{label: "PDF", href: "#"}, {label: "Project", href: "#"}]
+       
+        <script>
+      // --- Data ---
+      const publications = [
+        {
+          title: "Development of a self-report measure of prediction in daily life: The prediction-related experiences questionnaire.",
+          authors: "O’Brien, A. M., May, T. A., Koskey, K. L. K., Bungert, L., Cardinaux, A., Cannon, J., Treves, I. N., D’Mello, A. M., Joseph, R. M., Li, C., Diamond, S., Gabrieli, J. D. E., Sinha, P.",
+          venue: "Journal of Autism and Developmental Disorders, 2024",
+          links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
+        },
+        {
+          title: "Altered engagement of the speech motor network is associated with reduced phonological working memory in autism.",
+          authors: "O’Brien, A. M., Perrachione, T. K., Wisman Weil, L., Sanchez Araujo, Y., Halverson, K., Harris, A., Ostrovskaya, I., Kjelgaard, M., Wexler, K., Tager-Flusberg, H., Gabrieli, J. D. E., & Qi, Z.",
+          venue: "Neuroimage: Clinical, 2023",
+          links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
+        },
+        {
+          title: "Prediction in Autism Spectrum Disorder: A systematic review of empirical evidence.",
+          authors: "Cannon, J.*, O’Brien, A. M.*, Bungert, L., & Sinha, P.",
+          venue: "Autism Research, 2021",
+          links: [{ label: "PDF", href: "#" }, { label: "DOI", href: "#" }]
+        }
+      ];
+    
+      const news = [
+        { date: "2025-09-01", text: "Our new paper related to employment experiences in autistic adults is in press!" }
+      ];
+    
+      // --- Helpers ---
+      function el(tag, attrs = {}, children = []) {
+        const n = document.createElement(tag);
+        Object.entries(attrs).forEach(([k, v]) => (k === "class" ? (n.className = v) : n.setAttribute(k, v)));
+        (Array.isArray(children) ? children : [children])
+          .filter(Boolean)
+          .forEach(c => (typeof c === "string" ? n.appendChild(document.createTextNode(c)) : n.appendChild(c)));
+        return n;
       }
-    ];
+    
+      // --- Render publications ---
+      const pubsRoot = document.getElementById("pubs");
+      publications.forEach(p => {
+        const linkNodes = p.links
+          .map(l => el("a", { href: l.href, target: "_blank", rel: "noopener" }, l.label))
+          .flatMap((a, i, arr) => (i < arr.length - 1 ? [a, document.createTextNode(" · ")] : [a]));
+    
+        const node = el("article", { class: "item" }, [
+          el("h3", {}, p.title),
+          el("p", { class: "meta" }, `${p.authors} — ${p.venue}`),
+          el("div", { class: "meta" }, linkNodes)
+        ]);
+        pubsRoot.appendChild(node);
+      });
+    
+      // --- Render news ---
+      const newsRoot = document.getElementById("newsList");
+      news.forEach(n => newsRoot.appendChild(el("li", {}, `${n.date}: ${n.text}`)));
+    
+      // --- Year ---
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
 
     const news = [
       { date: "2025‑09‑01", text: "Our new paper related to employment experiences in autistic adults is in press!" }
